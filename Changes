@@ -1,0 +1,6 @@
+Revision history for Perl extension Gtk2::Ex::TimeEntry.
+
+0.01  Mon Mar 30 23:24:17 2009
+	- original version; created by h2xs 1.23 with options
+		-AX Gtk2::Ex::TimeEntry
+
