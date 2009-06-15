@@ -1,5 +1,5 @@
 package Gtk2::Ex::TimeEntry;
-$Gtk2::Ex::TimeEntry::VERSION = 0.01;
+$Gtk2::Ex::TimeEntry::VERSION = 0.02;
 use strict;
 use warnings;
 use Carp;
