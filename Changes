@@ -4,3 +4,9 @@ Revision history for Perl extension Gtk2::Ex::TimeEntry.
 	- original version; created by h2xs 1.23 with options
 		-AX Gtk2::Ex::TimeEntry
 
+0.02  Mon Jun 15 05:00:00 2009
+	- converted dos line endings to linux style endings
+
+0.03  Mon Jun 15 05:44:00 2009
+	- fixed typos in pod
+	

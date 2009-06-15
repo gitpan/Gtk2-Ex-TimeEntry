@@ -1,5 +1,5 @@
 package Gtk2::Ex::TimeEntry;
-$Gtk2::Ex::TimeEntry::VERSION = 0.02;
+$Gtk2::Ex::TimeEntry::VERSION = 0.03;
 use strict;
 use warnings;
 use Carp;
@@ -441,7 +441,7 @@ entire contents of the entry is selected (such as when you focus-in) modifies
 the value in 15 minute increments.
 
 The time is stored in HH:MM:SS format (but display in HH:MM PM format). If you
-entry a value 24:00:00 or higher, it will loop back around t
+entry a value 24:00:00 or higher, it will loop back around.
 
 You can also type a time into the entry into various formats, which will be
 parsed and then displayed in the entry in HH:MM PM format. Here are some
@@ -450,14 +450,14 @@ display values.
 
 =over 4
 
-INPUT       VALUE       DISPLAY
-1           01:00:00    01:00 AM
-10          10:00:00    10:00 AM
-420         04:20:00    04:20 AM
-4:20        04:20:00    04:20 AM
-420pm       16:20:00    04:20 PM
-04:20 PM    16:20:00    04:20 PM
-30:20:00    04:20:00    04:20 AM
+    INPUT       VALUE       DISPLAY
+    1           01:00:00    01:00 AM
+    10          10:00:00    10:00 AM
+    420         04:20:00    04:20 AM
+    4:20        04:20:00    04:20 AM
+    420pm       16:20:00    04:20 PM
+    04:20 PM    16:20:00    04:20 PM
+    30:20:00    04:20:00    04:20 AM
 
 =back 4
 
@@ -495,7 +495,7 @@ Set the widget value to the current time.
 
 =over 4
 
-=item C<value> (string, default '')
+=item C<value (string, default '')>
 
 The current time format in ISO format HH:MM:SS. Can be set to an empty string
 for no time. When setting the value you, you may pass any acceptable value
@@ -508,7 +508,7 @@ HH:MM:SS format.
 
 =over 4
 
-=item C<value-changed>)
+=item C<value-changed>
 
 Emitted after a succesful value change.
 
