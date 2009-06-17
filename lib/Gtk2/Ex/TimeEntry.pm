@@ -1,5 +1,5 @@
 package Gtk2::Ex::TimeEntry;
-$Gtk2::Ex::TimeEntry::VERSION = 0.03;
+$Gtk2::Ex::TimeEntry::VERSION = 0.04;
 use strict;
 use warnings;
 use Carp;
@@ -440,10 +440,10 @@ left and right keys to navigate between them. Pressing up or down while the
 entire contents of the entry is selected (such as when you focus-in) modifies
 the value in 15 minute increments.
 
-The time is stored in HH:MM:SS format (but display in HH:MM PM format). If you
+The time is stored in HH:MM:SS format (but displayed in HH:MM PM format). If you
 entry a value 24:00:00 or higher, it will loop back around.
 
-You can also type a time into the entry into various formats, which will be
+You can also type a time into the entry in various formats, which will be
 parsed and then displayed in the entry in HH:MM PM format. Here are some
 examples of things you can enter into the widget and the resulting internal and
 display values.
@@ -467,23 +467,23 @@ display values.
 
 =item C<< $te = Gtk2::Ex::TimeEntry->new (key=>value,...) >>
 
-Create and return a new DateSpinner widget.  Optional key/value pairs set
+Create and return a new TimeEntry widget.  Optional key/value pairs set
 initial properties per C<< Glib::Object->new >>.  Eg.
 
     my $te = Gtk2::Ex::TimeEntry->new (value => '16:00:00');
 
 =item C<< $te->get_selected_component >>
 
-Returns the currently selected component - any of hours, minutes, meridiem, all
-or an emptry string. An emptry string will be returned if the selection bounds
-contains more or less than 1 individual component, and will return all if all
-componentes are selected.
+Returns the name of the currently selected component.  Valid values are
+I<hours, minutes, meridiem,> and I<all>. An emptry string will be returned if
+the selection bounds contains less than 1 individual component, or more than 1
+component but less than all of them.
 
 =item C<< $te->set_selected_component($component) >>
 
 Highlights the given component, which can then be edited by typing over it or
-pressing the arrow keys up or down. You can pass the values all, hours, minutes,
-meridiem, an emptry string, or undef.
+pressing the arrow keys up or down. Acceptable values are I<hours, minutes,
+meridiem,> and I<all>.
 
 =item C<< $te->set_now >>
 
@@ -497,7 +497,7 @@ Set the widget value to the current time.
 
 =item C<value (string, default '')>
 
-The current time format in ISO format HH:MM:SS. Can be set to an empty string
+The current time format in HH:MM:SS format. Can be set to an empty string
 for no time. When setting the value you, you may pass any acceptable value
 outlined in the widget description, but the time will always be stored in
 HH:MM:SS format.
@@ -514,17 +514,13 @@ Emitted after a succesful value change.
 
 =back
 
-=head1 SEE ALSO
-
-L<Gtk2::Ex::TimeEntry::CellRenderer>
-
 =head1 AUTHOR
 
 Jeffrey Hallock <jeffrey dot hallock at gmail dot com>
 
 =head1 BUGS
 
-None known. Please send bugs to <jeffrey dot hallock at gmail dot org>.
+None known. Please send bugs to <jeffrey dot hallock at gmail dot com>.
 Patches and suggestions welcome.
 
 =head1 LICENSE

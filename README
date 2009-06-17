@@ -1,4 +1,4 @@
-Gtk2-Ex-TimeEntry version 0.03
+Gtk2-Ex-TimeEntry version 0.04
 ==============================
 
 An entry widget for inputting that time of the day.
@@ -19,8 +19,6 @@ This module requires these other modules and libraries:
   Gtk2
 
 COPYRIGHT AND LICENCE
-
-Put the correct copyright and licence information here.
 
 Copyright (C) 2009 by Jeffrey Ray Hallock
 
