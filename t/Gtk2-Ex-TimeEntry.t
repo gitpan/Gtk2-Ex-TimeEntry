@@ -78,8 +78,8 @@ my @movement_tests = (
     [qw/minutes   right  meridiem/],
     [qw/meridiem  left   minutes /],
     [qw/meridiem  right  meridiem/],
-    [qw/all       left   hours   /],
-    [qw/all       right  meridiem/],
+    [qw/all       left   meridiem/],
+    [qw/all       right  hours   /],
 );
 
 for (@movement_tests) {
@@ -91,7 +91,6 @@ for (@movement_tests) {
 }
 
 my @position_tests = (
-    [qw/0 left  hours/],
     [qw/0 right hours/],
     [qw/0 up    hours/],
     [qw/0 down  hours/],

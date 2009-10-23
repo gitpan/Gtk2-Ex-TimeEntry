@@ -1,16 +1,15 @@
 package Gtk2::Ex::TimeEntry;
-$Gtk2::Ex::TimeEntry::VERSION = 0.04;
 use strict;
 use warnings;
 use Carp;
+
+our $VERSION = 0.05;
+our $AUTHORITY = 'cpan:JHALLOCK';
 
 
 use Gtk2;
 
 use Glib qw(TRUE FALSE);
-our $VERSION = 3;
-
-use constant DEBUG => 0;
 
 use Glib::Object::Subclass
     Gtk2::Entry::,
@@ -122,29 +121,38 @@ sub _do_key_press_event {
 sub _do_key_left {
     my $self = shift;
     my $selected = $self->get_selected_component;
-    $self->_select_closest_component('left') and return TRUE if !$selected;
     
-    if ($selected =~ /all|minutes/) {
-        $self->set_selected_component('hours');
+    if (! $selected) {
+        return FALSE if $self->get_position == 0;
+        $self->_select_closest_component('left');
+        return TRUE;
     }
-    elsif ($selected eq 'meridiem') {
-        $self->set_selected_component('minutes');
+    else {
+        if    ($selected eq 'all'     ) { $self->set_selected_component('meridiem')}
+        elsif ($selected eq 'hours'   ) { return FALSE;                            }
+        elsif ($selected eq 'minutes' ) { $self->set_selected_component('hours')   }
+        elsif ($selected eq 'meridiem') { $self->set_selected_component('minutes') }
+        return TRUE;
     }
-    return TRUE;
 }
 
 sub _do_key_right {
     my $self = shift;
     my $selected = $self->get_selected_component;
     $self->_select_closest_component('right') and return TRUE if !$selected;
-    
-    if ($selected =~ /all|minutes/) {
-        $self->set_selected_component('meridiem');
+
+    if (! $selected) {
+        return FALSE if $self->get_position == 0;
+        $self->_select_closest_component('left');
+        return TRUE;
     }
-    elsif ($selected eq 'hours') {
-        $self->set_selected_component('minutes');
+    else {
+        if    ($selected eq 'all'     ) { $self->set_selected_component('hours')    }
+        elsif ($selected eq 'hours'   ) { $self->set_selected_component('minutes')  }
+        elsif ($selected eq 'minutes' ) { $self->set_selected_component('meridiem') }
+        elsif ($selected eq 'meridiem') { return FALSE;  }
+        return TRUE;
     }
-    return TRUE;
 }
 
 sub _do_key_up {
@@ -441,7 +449,7 @@ entire contents of the entry is selected (such as when you focus-in) modifies
 the value in 15 minute increments.
 
 The time is stored in HH:MM:SS format (but displayed in HH:MM PM format). If you
-entry a value 24:00:00 or higher, it will loop back around.
+enter a value 24:00:00 or higher, it will loop back around.
 
 You can also type a time into the entry in various formats, which will be
 parsed and then displayed in the entry in HH:MM PM format. Here are some
@@ -453,10 +461,10 @@ display values.
     INPUT       VALUE       DISPLAY
     1           01:00:00    01:00 AM
     10          10:00:00    10:00 AM
-    420         04:20:00    04:20 AM
-    4:20        04:20:00    04:20 AM
-    420pm       16:20:00    04:20 PM
-    04:20 PM    16:20:00    04:20 PM
+    120         01:20:00    01:20 AM
+    1:20        01:20:00    01:20 AM
+    120pm       13:20:00    01:20 PM
+    01:20 PM    13:20:00    01:20 PM
     30:20:00    04:20:00    04:20 AM
 
 =back 4
@@ -514,13 +522,17 @@ Emitted after a succesful value change.
 
 =back
 
+=head1 SEE ALSO
+
+L<Gtk2::Ex::DateEntry>
+
 =head1 AUTHOR
 
-Jeffrey Hallock <jeffrey dot hallock at gmail dot com>
+Jeffrey Ray Hallock <jeffrey.ray at ragingpony dot com>
 
 =head1 BUGS
 
-None known. Please send bugs to <jeffrey dot hallock at gmail dot com>.
+None known. Please send bugs to <jeffrey.ray at ragingpony dot com>.
 Patches and suggestions welcome.
 
 =head1 LICENSE

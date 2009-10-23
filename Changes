@@ -1,14 +1,21 @@
 Revision history for Perl extension Gtk2::Ex::TimeEntry.
 
-0.01  Mon Mar 30 23:24:17 2009
-	- original version; created by h2xs 1.23 with options
-		-AX Gtk2::Ex::TimeEntry
+0.05  Wed Oct 10 12:12:00 2009
+    - left/rigth navigation bug fix
+		* right from 'all' selects hours
+		* left from 'all' selects meridiem
+		* left to previous widget when cursor is in position 0
+		* right to next widget when cursor is in last position
+
+0.04  Tue Jun 16 11:27:00 2009
+	- fixed typos in pod
+
+0.03  Mon Jun 15 05:44:00 2009
+	- fixed typos in pod
 
 0.02  Mon Jun 15 05:00:00 2009
 	- converted dos line endings to linux style endings
 
-0.03  Mon Jun 15 05:44:00 2009
-	- fixed typos in pod
-	
-0.04  Tue Jun 16 11:27:00 2009
-	- fixed typos in pod
+0.01  Mon Mar 30 23:24:17 2009
+	- original version; created by h2xs 1.23 with options
+		-AX Gtk2::Ex::TimeEntry

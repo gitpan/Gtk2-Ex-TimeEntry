@@ -5,8 +5,8 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     NAME              => 'Gtk2::Ex::TimeEntry',
     VERSION_FROM      => 'lib/Gtk2/Ex/TimeEntry.pm', # finds $VERSION
-    PREREQ_PM         => {}, # e.g., Module::Name => 1.1
+    PREREQ_PM         => {Gtk2 => 0}, # e.g., Module::Name => 1.1
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM  => 'lib/Gtk2/Ex/TimeEntry.pm', # retrieve abstract from module
-       AUTHOR         => 'A. U. Thor <a.u.thor@a.galaxy.far.far.away>') : ()),
+      (ABSTRACT       => 'Gtk2 widget for entering times', # retrieve abstract from module
+       AUTHOR         => 'Jeffrey Ray Hallock <jeffrey.ray at ragingpony dot com>') : ()),
 );
